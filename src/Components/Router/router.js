@@ -5,6 +5,7 @@ import UseRefExample from "../UseRefExamples/useRefExample"
 import Handsontable from '../Handontable/handsontable'
 import CallForwardRef from '../ForwardRefExamples/callForwardRef'
 import InteractWithRedux from '../ReduxStoreInteraction/interactWithRedux';
+import Registration from '../Formik-Material-UI/Registration';
 import Navbar from '../navbar';
 
 export default function Router() {
@@ -17,6 +18,7 @@ export default function Router() {
                 <Route path="/UseRefExample" component={UseRefExample} />
                 <Route path="/Handsontable" component={Handsontable} />
                 <Route path="/Employees" component={Employees} />
+                <Route path="/Registration" component={Registration} />
             </Switch>
         </BrowserRouter>
     )
