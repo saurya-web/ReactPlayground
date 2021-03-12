@@ -1,7 +1,9 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik';
-import { Button, LinearProgress, Typography } from '@material-ui/core';
+import { Formik, Form, Field } from 'formik'
+import { Button, LinearProgress, Typography } from '@material-ui/core'
 import { TextField } from 'formik-material-ui'
+import * as Yup from 'yup'
+import { DisplayFormikState } from "./helper"
 
 export default function Registration() {
     return (
@@ -10,17 +12,10 @@ export default function Registration() {
                 email: '',
                 password: '',
             }}
-            validate={values => {
-                const errors = {};
-                if (!values.email) {
-                    errors.email = 'Required';
-                } else if (
-                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-                ) {
-                    errors.email = 'Invalid email address';
-                }
-                return errors;
-            }}
+            validationSchema={Yup.object({
+                email: Yup.string().email('Invalid email address').required('Required'),
+                password: Yup.string().max(5, 'Must be max 5 characters').required('Required')
+            })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                     setSubmitting(false);
@@ -28,9 +23,10 @@ export default function Registration() {
                 }, 1000);
             }}
         >
-            {({ submitForm, isSubmitting }) => (
+            {(props) => (
                 <Form>
                     <Typography variant="h5">Registration Form - Formik Material UI</Typography>
+                    {/* <div>{JSON.stringify(props)}</div> */}
                     <Field
                         component={TextField}
                         name="email"
@@ -50,19 +46,21 @@ export default function Registration() {
                         fullWidth
                         style={{ marginTop: 20, marginBottom: 20 }}
                     />
-                    {isSubmitting && <LinearProgress />}
+                    {props.isSubmitting && <LinearProgress />}
                     <br />
                     <Button
                         variant="contained"
                         color="primary"
-                        disabled={isSubmitting}
-                        onClick={submitForm}
+                        disabled={props.isSubmitting}
+                        onClick={props.submitForm}
                         style={{ marginTop: 20, marginBottom: 20 }}
                     >
                         Submit
-          </Button>
+                    </Button>
+                    <DisplayFormikState {...props} />
                 </Form>
-            )}
+            )
+            }
         </Formik >
     )
 }
