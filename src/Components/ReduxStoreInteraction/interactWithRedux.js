@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { increase, decrease, reinitialize } from '../../slices/increaseDecreaseSlice'
+import { increase, decrease, reinitialize } from '../../store/state-slices/increaseDecreaseSlice'
 import Button from '@material-ui/core/Button'
 
 export default function InteractWithRedux() {
