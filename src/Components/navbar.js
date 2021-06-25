@@ -5,6 +5,9 @@ export default function Navbar() {
   return (
     <ul>
       <li>
+        <Link to='/ImagesList'>ImagesList</Link>
+      </li>
+      <li>
         <Link to='/CallForwardRef'>CallForwardRef</Link>
       </li>
       <li>

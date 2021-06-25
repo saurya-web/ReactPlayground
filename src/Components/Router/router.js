@@ -7,6 +7,7 @@ import CallForwardRef from '../ForwardRefExamples/callForwardRef';
 import InteractWithRedux from '../ReduxStoreInteraction/interactWithRedux';
 import Registration from '../Formik-Material-UI/Registration';
 import RenderPropsDemo from '../RenderProps/RenderPropsDemo';
+import ImagesList from '../Unsplash/ImagesList';
 import Navbar from '../navbar';
 
 export default function Router() {
@@ -21,6 +22,7 @@ export default function Router() {
         <Route path='/Employees' component={Employees} />
         <Route path='/Registration' component={Registration} />
         <Route path='/RenderPropsDemo' component={RenderPropsDemo} />
+        <Route path='/ImagesList' component={ImagesList} />
       </Switch>
     </BrowserRouter>
   );
